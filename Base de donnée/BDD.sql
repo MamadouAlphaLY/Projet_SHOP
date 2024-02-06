@@ -32,8 +32,41 @@ CREATE TABLE Clients (
     Prenom_Client varchar(30),
     Adresse_Client varchar(100),
     Ville_Client varchar(30),
-    Code_Postal int,
-    telephone int,
-    e-mail varchar(30),
+    Code_Postal_Client int,
+    telephone_Client int,
+    e-mail_Client varchar(30),
     PRIMARY KEY(ID_Client));
 
+CREATE TABLE Employes (
+    ID_Employe int AUTO_INCREMENT NOT NULL,
+    Nom_Employe varchar(30),
+    Prenom_Employe varchar(30),
+    Adresse_Employe varchar(100),
+    Ville_Employe varchar(30),
+    Code_Postal_Emp int,
+    telephone_Emp int,
+    e-mail_Emp varchar(30),
+    PRIMARY KEY(ID_Employe));
+
+CREATE TABLE Fournisseur (
+    ID_Fournisseur int AUTO_INCREMENT NOT NULL,
+    Nom_Fournisseur varchar(30),
+    Adresse_Fournisseur varchar(100),
+    Ville_Fournisseur varchar(30),
+    Code_Postal_Fourni int,
+    telephone_Fourni int,
+    e-mail_Fourni varchar(30),
+    PRIMARY KEY(ID_Fournisseur));
+CREATE TABLE Inscrits (
+    ID_Produit int,
+    ID_Commande int,
+    PRIMARY KEY(ID_Produit, ID_Commande),
+    FOREIGN KEY(ID_Produit) REFERENCES Produits(ID_Produit),
+    FOREIGN KEY(ID_Commande) REFERENCES Commandes(ID_Commande));
+CREATE TABLE Traiter(
+    ID_Commande int,
+    ID_Employe int,
+    PRIMARY KEY(ID_Commande, ID_Employe),
+    FOREIGN KEY(ID_Commande) REFERENCES Commandes(ID_Commande),
+    FOREIGN KEY(ID_Employe) REFERENCES Employes(ID_Employe)
+)
