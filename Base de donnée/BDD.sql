@@ -48,7 +48,7 @@ CREATE TABLE Employes (
     e-mail_Emp varchar(30),
     PRIMARY KEY(ID_Employe));
 
-CREATE TABLE Fournisseur (
+CREATE TABLE Fournisseurs (
     ID_Fournisseur int AUTO_INCREMENT NOT NULL,
     Nom_Fournisseur varchar(30),
     Adresse_Fournisseur varchar(100),
@@ -57,12 +57,14 @@ CREATE TABLE Fournisseur (
     telephone_Fourni int,
     e-mail_Fourni varchar(30),
     PRIMARY KEY(ID_Fournisseur));
+    
 CREATE TABLE Inscrits (
     ID_Produit int,
     ID_Commande int,
     PRIMARY KEY(ID_Produit, ID_Commande),
     FOREIGN KEY(ID_Produit) REFERENCES Produits(ID_Produit),
     FOREIGN KEY(ID_Commande) REFERENCES Commandes(ID_Commande));
+
 CREATE TABLE Traiter(
     ID_Commande int,
     ID_Employe int,
